@@ -18,6 +18,8 @@ public:
 	~Pocisk();
 	Pocisk(const Pocisk& drugi);
 
+	void Trafienie();
+
 	const Pocisk& operator=(const Pocisk& drugi);
 };
 

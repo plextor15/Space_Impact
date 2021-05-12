@@ -11,14 +11,24 @@
 #ifndef HUDTXT_H
 #define HUDTXT_H
 
-
+#include "Gracz.h"
+#include <iostream>
 
 class HUDtxt
 {
 public:
-	HUDtxt();
+	int Punkty;
+	char CharPunkty;
+	char CharZdrowie;
+
+	char** Wyglad; //ASCII art wygladu
+
+	HUDtxt(char zdrowie, char punkty);
 	~HUDtxt();
 	HUDtxt(const HUDtxt& H);
+
+	void AktualizacjaRozdzielczosci(int szer, int wys);
+
 	const HUDtxt& operator=(const HUDtxt&);
 };
 

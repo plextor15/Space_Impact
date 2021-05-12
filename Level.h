@@ -18,11 +18,15 @@
 class Level
 {
 public:
+	char** Mapa;	//caly poziom
+	char** MapaWidoczna;	//czesc widoczna na ekranie
+
 	Level();
 	~Level();
 	Level(const Level& drugi);
 
-	void Usuniecie(int x, int y); //usuwa obiekt z tablicy
+	void UsuniecieObiektu(int x, int y); //usuwa obiekt z tablicy
+	void Widok();
 
 	const Level& operator=(const Level& drugi);
 };
