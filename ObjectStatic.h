@@ -16,14 +16,16 @@
 class ObjectStatic
 {
 protected:
-	bool Widzialny;
-	bool Przezroczysty;
-	char Wyglad;
+	bool Widzialny = true;
+	bool Przezroczysty = false;
+	char Wyglad = '?';
 
 public:
 	ObjectStatic(bool widzialny, bool przezroczysty, char wyglad);
 	~ObjectStatic();
 	ObjectStatic(const ObjectStatic& drugi);
+
+	void SetPropeties(bool widzialny, bool przezroczysty, char wyglad);
 
 	const ObjectStatic& operator=(const ObjectStatic& drugi);
 };

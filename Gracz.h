@@ -13,9 +13,13 @@ class Gracz : private ObjectPlayble
 {
 private:
 public:
-	Gracz();
+	int Zdrowie = 4;
+
+	Gracz(char wyglad, int zdrowie);
 	~Gracz();
 	Gracz(const Gracz& drugi);
+
+	void Trafiony(int ileObrazen);
 
 	const Gracz& operator=(const Gracz& drugi);
 };

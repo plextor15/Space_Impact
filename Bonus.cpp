@@ -1,16 +1,17 @@
 #include "Bonus.h"
 
-Bonus::Bonus()
+Bonus::Bonus(char wyglad) : ObjectStatic(true, false, wyglad)
 {
+	
 }
 
 Bonus::~Bonus()
 {
 }
 
-Bonus::Bonus(const Bonus& drugi)
-{
-}
+//Bonus::Bonus(const Bonus& drugi)
+//{
+//}
 
 const Bonus& Bonus::operator=(const Bonus& drugi)
 {

@@ -8,7 +8,6 @@ Engine::~Engine(){
 
 Engine::Engine(const Engine& drugi) {}
 
-const Engine& Engine::operator=(const Engine& drugi){}
 
 void Engine::Initialize(){
 	//zaladowanie planszy

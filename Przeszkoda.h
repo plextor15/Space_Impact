@@ -12,7 +12,7 @@
 class Przeszkoda : private ObjectStatic
 {
 public:
-	Przeszkoda();
+	Przeszkoda(char wyglad);
 	~Przeszkoda();
 	Przeszkoda(const Przeszkoda &drugi);
 

@@ -12,7 +12,9 @@
 class Pocisk : private ObjectDynamic
 {
 public:
-	Pocisk();
+	int Obrazenia = 1;
+
+	Pocisk(char wyglad, int obrazenia);
 	~Pocisk();
 	Pocisk(const Pocisk& drugi);
 

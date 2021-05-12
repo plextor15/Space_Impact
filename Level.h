@@ -22,6 +22,8 @@ public:
 	~Level();
 	Level(const Level& drugi);
 
+	void Usuniecie(int x, int y); //usuwa obiekt z tablicy
+
 	const Level& operator=(const Level& drugi);
 };
 

@@ -1,6 +1,6 @@
 #include "Przeszkoda.h"
 
-Przeszkoda::Przeszkoda()
+Przeszkoda::Przeszkoda(char wyglad) : ObjectStatic(true, true, wyglad)
 {
 }
 
@@ -8,9 +8,9 @@ Przeszkoda::~Przeszkoda()
 {
 }
 
-Przeszkoda::Przeszkoda(const Przeszkoda& drugi)
-{
-}
+//Przeszkoda::Przeszkoda(const Przeszkoda& drugi)
+//{
+//}
 
 const Przeszkoda& Przeszkoda::operator=(const Przeszkoda& drugi)
 {

@@ -6,6 +6,7 @@
 * Przyklady: czolg, katapulta, elf
 * 
 * 18/04/2021 AP	utworzenie klasy
+* 12/05/2021 AP parametry dla konstruktora
 */
 
 #ifndef OBJECTPLAYBLE_H
@@ -16,6 +17,11 @@
 class ObjectPlayble : protected ObjectDynamic
 {
 public:
+	char RuchN = 'n';
+	char RuchS = 's';
+	char RuchW = 'a';
+	char RuchE = 'd';
+
 	ObjectPlayble(bool widzialny, bool przezroczysty, char wyglad);
 	~ObjectPlayble();
 	ObjectPlayble(const ObjectPlayble& drugi);

@@ -1,16 +1,17 @@
 #include "Wrogowie.h"
 
-Wrogowie::Wrogowie()
+Wrogowie::Wrogowie(char wyglad, int zdrowie) : ObjectDynamic(true, false, wyglad)
 {
+	Zdrowie = zdrowie;
 }
 
 Wrogowie::~Wrogowie()
 {
 }
 
-Wrogowie::Wrogowie(const Wrogowie& drugi)
-{
-}
+//Wrogowie::Wrogowie(const Wrogowie& drugi)
+//{
+//}
 
 const Wrogowie& Wrogowie::operator=(const Wrogowie& drugi)
 {

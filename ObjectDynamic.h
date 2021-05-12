@@ -6,6 +6,7 @@
 * Przyklady: wystrzelona strzala, kloda plynaca na wodzie
 * 
 * 18/04/2021 AP	utworzenie klasy
+* 12/05/2021 AP parametry dla konstruktora
 */
 
 #ifndef OBJECTDYNAMIC_H
@@ -16,6 +17,9 @@
 class ObjectDynamic : protected ObjectStatic
 {
 public:
+	int predkosc = 0; //w kratkach na klatke
+	char kierunek = 'N'; // N,S,W,E
+
 	ObjectDynamic(bool widzialny, bool przezroczysty, char wyglad);
 	~ObjectDynamic();
 	ObjectDynamic(const ObjectDynamic& drugi);

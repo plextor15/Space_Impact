@@ -12,7 +12,7 @@
 class Bonus : protected ObjectStatic
 {
 public:
-	Bonus();
+	Bonus(char wyglad);
 	~Bonus();
 	Bonus(const Bonus& drugi);
 

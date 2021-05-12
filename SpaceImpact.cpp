@@ -11,7 +11,7 @@
 #include "Text.h"
 
 int main() {
-	Engine* SpaceImpact = new Text(1000);
+	Engine* SpaceImpact = new Text(1000, 50, 15);
 	SpaceImpact->GameLoop();
 
 	return 0;

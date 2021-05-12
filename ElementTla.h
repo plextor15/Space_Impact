@@ -12,7 +12,7 @@
 class ElementTla : protected ObjectStatic
 {
 public:
-	ElementTla();
+	ElementTla(char wyglad);
 	~ElementTla();
 	ElementTla(const ElementTla& drugi);
 

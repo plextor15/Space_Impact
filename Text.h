@@ -21,14 +21,18 @@ class Text : public Engine
 {
 public:
 	short ileKlatka;
+	short RozSzerokosc;
+	short RozWysokosc;
 
-	Text(short ile_trwa_klatka);
+	Text(short ile_trwa_klatka, short szer, short wys);
 	virtual ~Text();
 	Text(const Text& drugi);  //singleton
 
 	const Text& operator=(const Text& drugi); //singleton
 
 	virtual void View();
+	void SetRozdzielczosc(short szer, short wys);
+	void RuchDoPrzodu();
 };
 
 #endif // !TEXT_H

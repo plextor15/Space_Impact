@@ -12,7 +12,9 @@
 class Wrogowie : private ObjectDynamic
 {
 public:
-	Wrogowie();
+	int Zdrowie = 1;
+
+	Wrogowie(char wyglad, int zdrowie);
 	~Wrogowie();
 	Wrogowie(const Wrogowie& drugi);
 
