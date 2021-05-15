@@ -1,23 +1,6 @@
 #include "Wrogowie.h"
 
-Wrogowie::Wrogowie(char wyglad, int zdrowie) : ObjectDynamic(true, false, wyglad)
+Wrogowie::Wrogowie(char wyglad, char tag, int zdrowie, int punkty) : GameObject(wyglad, tag, zdrowie)
 {
-	Zdrowie = zdrowie;
-}
-
-Wrogowie::~Wrogowie()
-{
-}
-
-//Wrogowie::Wrogowie(const Wrogowie& drugi)
-//{
-//}
-
-const Wrogowie& Wrogowie::operator=(const Wrogowie& drugi)
-{
-	if (this == &drugi) {
-		return *this;
-	}
-
-	return *this;
+	Punkty = punkty;
 }

@@ -1,24 +1,19 @@
-/*	Klasa: "Wrogowie"
-*	Autor: Adam Porembinski
-* 
-*	12/05/2021	AP utworzenie klasy
-*/
-
 #ifndef WROGOWIE_H
 #define WROGOWIE_H
 
-#include "ObjectDynamic.h"
+#include "GameObject.h"
 
-class Wrogowie : private ObjectDynamic
+class Wrogowie : public GameObject
 {
-public:
-	int Zdrowie = 1;
+protected:
+	int Punkty;		//punkty za zabicie
 
-	Wrogowie(char wyglad, int zdrowie);
+public:
+	Wrogowie(char wyglad, char tag, int zdrowie, int punkty);
 	~Wrogowie();
 	Wrogowie(const Wrogowie& drugi);
-
 	const Wrogowie& operator=(const Wrogowie& drugi);
 };
+
 
 #endif // !WROGOWIE_H

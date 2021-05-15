@@ -1,18 +1,33 @@
 #include "Level.h"
 
-Level::Level(){
+Level::Level()
+{
 }
 
-Level::~Level(){
-}
-
-Level::Level(const Level& drugi){
-}
-
-const Level& Level::operator=(const Level& drugi){
-	if (this == &drugi) {
-		return *this;
+Level::~Level()
+{
+	if (Mapa) {
+		for (long i = 0; i < Wysokosc; i++) {
+			delete[] Mapa[i];
+		}
+		delete[] Mapa;
 	}
 
-	return *this;
+	if (MapaWidoczna) {
+		for (long i = 0; i < Wysokosc; i++) {
+			delete[] MapaWidoczna[i];
+		}
+		delete[] MapaWidoczna;
+	}
+
+}
+
+void Level::SetWidocznyRozmiar(int wys, int szer)
+{
+	if (wys < Wysokosc && szer < Szerokosc) 
+	{
+		WysokoscWidok = wys;
+		SzerokoscWidok = szer;
+	}
+	return;
 }

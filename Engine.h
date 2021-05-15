@@ -1,27 +1,16 @@
-/* Klasa: "Engine" abstrakcyjna
-* Autor: Adam Porembinski
-* Opis:
-*	Jest to glowny silnik gry.
-* Przyklad: Unreal Engine, Spurce
-* 
-* 18/04/2021 AP	utworzenie klasy, dodanie podstawowych metod
-*/
-
 #ifndef ENGINE_H
 #define ENGINE_H
 
 #include "Level.h"
 #include <fstream>
-#include <string>
 
-class Engine
+class Engine : protected Level
 {
 public:
 	Engine();
 	virtual ~Engine();
-	Engine(const Engine& drugi); //singleton
-
-	const Engine& operator=(const Engine& drugi); //singleton
+	Engine(const Engine& drugi);
+	const Engine& operator=(const Engine& drugi);
 
 	void Initialize();
 	void GameLoop();
