@@ -10,6 +10,8 @@ public:
 	~Gracz();
 	Gracz(const Gracz& drugi);
 	const Gracz& operator=(const Gracz& drugi);
+
+	//void Strzal();
 };
 
 #endif // !GRACZ_H

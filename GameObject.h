@@ -1,14 +1,26 @@
+//	22.05	zmiana tagu na enum,
+//			dodanie operatora =
+
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
+
+enum Typ
+{
+	pusty = 0,		// ' '
+	statyczny = 1,	// '#'
+	wrog = 2,		// '<'
+	gracz = 3,		// '>'
+	pocisk = 4		// '-'
+};
 
 class GameObject
 {
 public:
 	char Wyglad;
-	char Tag;		//  ">" - gracz, "<" - wrog, "#" - statyczny obiekt
+	Typ Tag;		
 	int Zdrowie;
 
-	GameObject(char wyglad, char tag, int zdrowie);
+	GameObject(char wyglad, Typ tag, int zdrowie);
 	~GameObject();
 	GameObject(const GameObject& drugi);
 	const GameObject& operator=(const GameObject& drugi);

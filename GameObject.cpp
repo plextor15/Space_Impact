@@ -1,6 +1,6 @@
 #include "GameObject.h"
 
-GameObject::GameObject(char wyglad, char tag, int zdrowie)
+GameObject::GameObject(char wyglad, Typ tag, int zdrowie)
 {
 	Wyglad = wyglad;
 	Tag = tag;
@@ -9,4 +9,17 @@ GameObject::GameObject(char wyglad, char tag, int zdrowie)
 
 GameObject::~GameObject()
 {
+}
+
+const GameObject& GameObject::operator=(const GameObject& drugi)
+{
+	if (this == &drugi)	{//sprawdzenie czy ten drugi to nie jest ten
+		return *this;
+	}
+
+	Wyglad = drugi.Wyglad;
+	Tag = drugi.Tag;
+	Zdrowie = drugi.Zdrowie;
+
+	return *this;
 }

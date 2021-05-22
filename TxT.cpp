@@ -15,3 +15,22 @@ void TxT::View()
 	system("CLS");
 	return;
 }
+
+void TxT::WyswietlTekst(std::string tekst){
+	int margines = (SzerokoscWidok / 2) - (tekst.length() / 2);
+	
+	for (int qw = 0; qw < margines; qw++){
+		tekst = " " + tekst + " ";
+	}
+	for (int qw = 0; qw < WysokoscWidok / 2; qw++){
+		std::cout << "\n";
+	}
+	std::cout << tekst;
+
+	return;
+}
+
+void TxT::Boom(){
+
+	return;
+}
