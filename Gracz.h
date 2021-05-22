@@ -1,27 +1,17 @@
-/*	Klasa: "Gracz"
-*	Autor: Adam Porembinski
-* 
-*	12/05/2021	AP	utworzenie klasy
-*/
-
 #ifndef GRACZ_H
 #define GRACZ_H
 
-#include "ObjectPlayble.h"
+#include "GameObject.h"
 
-class Gracz : private ObjectPlayble
+class Gracz : protected GameObject
 {
-private:
 public:
-	int Zdrowie = 4;
-
-	Gracz(char wyglad, int zdrowie);
+	Gracz(char wyglad, char tag, int zdrowie);
 	~Gracz();
 	Gracz(const Gracz& drugi);
-
-	void Trafiony(int ileObrazen);
-
 	const Gracz& operator=(const Gracz& drugi);
+
+	//void Strzal();
 };
 
 #endif // !GRACZ_H

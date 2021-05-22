@@ -1,34 +1,62 @@
-/* Klasa: "Level"
-* Autor: Adam Porembinski
-* Opis:
-*	Jest to klasa do stworzenia planszy na ktorej bedzie sie dziala cala akcja gry.
-* Oprocz widocznych obiektow, beda tez niewidzialne obiekty zwiazane z logika gry.
-* Przyklad: szeroka gama mozliwosci
-* 
-* 18/04/2021 AP	utworzenie klasy
-*/
+//	22.05	dodanie koordynatow gracza jako zmiennych,
+//			dodanie mozliwosci przesuwania obiektow i gracza,
+//			Mapa przechowuje teraz GameObjecty,
+//			detekcja kolizji i wyjscia poza plansze,
+//			dodanie analizy planszy
 
 #ifndef LEVEL_H
 #define LEVEL_H
 
-#include "ObjectStatic.h"
-#include "ObjectDynamic.h"
-#include "ObjectPlayble.h"
+//#include "GameObject.h"
+#include "Gracz.h"
+#include "Wrogowie.h"
+
+enum Kierunek
+{
+	GORA = 0,
+	DOL = 1,
+	PRAWO = 2,
+	LEWO = 3
+};
 
 class Level
 {
-public:
-	char** Mapa;	//caly poziom
-	char** MapaWidoczna;	//czesc widoczna na ekranie
+private:
+	bool Noclip(int wys);	//sprawdza czy nie wyszlismy poza plansze
+	void Analiza();
+	void PrzesunGracza(int wysCel, int szerCel);
 
+protected:
+	GameObject*** Mapa;			//caly poziom
+	char** MapaWidoczna;	//czesc widoczna na ekranie
+	int Wysokosc;
+	int Szerokosc;
+	int WysokoscWidok;		//wysokosc widoczna
+	int SzerokoscWidok;		//szerokosc widoczna
+
+	//koordynaty gracza
+	int GraczWys;
+	int GraczSzer;
+
+	//obiekty do ktore beda na mapie
+	GameObject* TPustka;
+	GameObject* TStatyczny;
+	GameObject* TWrog;
+	GameObject* TGracz;
+	GameObject* TPociskWroga;
+	GameObject* TPociskGracza;
+
+public:
 	Level();
 	~Level();
 	Level(const Level& drugi);
-
-	void UsuniecieObiektu(int x, int y); //usuwa obiekt z tablicy
-	void Widok();
-
 	const Level& operator=(const Level& drugi);
-};
 
+	void SetWidocznyRozmiar(int wys, int szer);
+
+	void PrzesunObjekt(int wysOb, int szerOb, int wysCel, int szerCel);
+	void PrzesunGracza(int oIle, Kierunek wKtoraStrone);
+	Typ Kolizja(int wys, int szer); //sprawdza czy bedzie kolizja
+	void ZniszczenieObiektu(int wysCel, int szerCel);
+};
 #endif // !LEVEL_H
