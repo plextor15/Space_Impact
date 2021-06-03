@@ -1,4 +1,5 @@
 #include "Engine.h"
+#include <iostream>//DEBUG ONLY!!
 
 Engine::Engine(){
 	//key = '`';
@@ -9,8 +10,13 @@ Engine::~Engine(){
 
 void Engine::ParserGameObject(char wyg, int i, int j) {
 	switch (wyg) {
+	case '.':
+		Mapa[i][j] = new GameObject(' ', Typ::pusty, 1);	//pusta przestrzen
+		break;
 	case '>':
 		Mapa[i][j] = new Gracz('>', Typ::gracz, 100);
+		GraczWys = i;
+		GraczSzer = j;
 		break;
 	case '<':
 		Mapa[i][j] = new Wrogowie('<', Typ::wrog, 20, 2);
@@ -19,7 +25,7 @@ void Engine::ParserGameObject(char wyg, int i, int j) {
 		Mapa[i][j] = new GameObject('#', Typ::statyczny, 999);	//niezniszczalne
 		break;
 	default:
-		Mapa[i][j] = new GameObject('#', Typ::pusty, 1);	//pusta przestrzen
+		Mapa[i][j] = new GameObject(' ', Typ::pusty, 1);	//pusta przestrzen
 		break;
 	}
 
@@ -46,10 +52,10 @@ void Engine::Sterow(){
 
 		switch (key){
 		//sterowanie statkiem gracza
-		case 'w':
+		case 's':
 			PrzesunGracza(1, Kierunek::GORA);
 			break;
-		case 's':
+		case 'w':
 			PrzesunGracza(1, Kierunek::DOL);
 			break;
 		case 'd':
@@ -62,7 +68,9 @@ void Engine::Sterow(){
 		case ' ':
 
 			break;
-
+		case 'q':	//wyjscie
+			exit = true;
+			break;
 		//cheaty
 		case '`':
 
@@ -80,6 +88,8 @@ void Engine::Sterow(){
 		
 		
 	}
+	//DEBUG ONLY!!
+		std::cout << key;
 	return;
 }
 
@@ -91,9 +101,13 @@ void Engine::Initialize()
 	if (inic.good())
 	{
 		inic >> Szerokosc >> Wysokosc;	//rozmiary poziomu
-		inic >> Szerokosc >> Wysokosc;	//rozmiary widocznej czesci poziomu
-
+		inic >> SzerokoscWidok >> WysokoscWidok;	//rozmiary widocznej czesci poziomu
+		WysokoscWidok = Wysokosc; //plansza tylko przesowa sie w poziomie
 	}
+	////DEBUG ONLY!!
+	//std::cout << Szerokosc << "  " << Wysokosc << "   " << SzerokoscWidok;
+	char jkjkkjjkkjjkjkjk = _getch();
+
 
 	//inicjalizacja glownej mapy
 	Mapa = new GameObject** [Wysokosc];
@@ -120,11 +134,21 @@ void Engine::Initialize()
 	//zapelnianie glownej mapy
 	char chartmp;
 	for (int i = 0; i < Wysokosc; i++){
+		//inic >> chartmp;
 		for (int j = 0; j < Szerokosc; j++){
 			inic >> chartmp;
 			ParserGameObject(chartmp, i, j);
 		}
 	}
+	//DEBUG ONLY!!
+	system("CLS");
+	for (int i = 0; i < Wysokosc; i++) {
+		for (int j = 0; j < Szerokosc; j++) {
+			std::cout << Mapa[i][j]->Wyglad;
+		}
+		std::cout << "\n";
+	}jkjkkjjkkjjkjkjk = _getch();
+
 
 	////zapelnianie widoku
 	//for (int i = 0; i < WysokoscWidok; i++)
@@ -147,10 +171,17 @@ void Engine::Initialize()
 void Engine::GameLoop(){
 	Initialize();
 	while (!exit){//glowna petla
+		Sterow();
+		if (GraczSzer != Szerokosc - 1) {
+			//PrzesunGracza(1, Kierunek::PRAWO); //zeby nie uciekl z ekranu
+		} else {
+			//koniec levelu
+		}
+		
 		Postep++;
 		AktualizacjaWidocznejMapy(Postep);
-
-		Sleep(ileKlatka);
+		View();
+		//Sleep(ileKlatka);	//jest w TxT
 	}
 	return;
 }

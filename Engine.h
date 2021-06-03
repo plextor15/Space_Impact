@@ -11,7 +11,8 @@
 
 class Engine : protected Level
 {
-protected:
+//protected:
+public:
 	bool exit = false;
 	char key = '`';
 	int ileKlatka = 300;

@@ -8,13 +8,14 @@
 #include <windows.h> //do Sleep i CLS
 #include <string>
 
-class TxT : protected Engine
+//class TxT : protected Engine
+class TxT : public Engine
 {
 public:
 	//int ileKlatka = 500;
 
-	TxT();
-	virtual ~TxT();
+	TxT() {};
+	virtual ~TxT() {};
 	TxT(const TxT& drugi);
 	const TxT& operator=(const TxT& drugi);
 
