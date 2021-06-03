@@ -3,10 +3,10 @@
 
 #include "GameObject.h"
 
-class Gracz : protected GameObject
+class Gracz : public GameObject
 {
 public:
-	Gracz(char wyglad, char tag, int zdrowie);
+	Gracz(char wyglad, Typ tag, int zdrowie);
 	~Gracz();
 	Gracz(const Gracz& drugi);
 	const Gracz& operator=(const Gracz& drugi);

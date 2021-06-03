@@ -69,8 +69,14 @@ void Level::PrzesunObjekt(int wysOb, int szerOb, int wysCel, int szerCel)
 	return;
 }
 
-void Level::PrzesunGracza(int wysCel, int szerCel)
-{
+void Level::PrzesunGracza(int wysCel, int szerCel){
+	if (wysCel < 0 || wysCel > Wysokosc-1){
+		return;
+	}
+	if (szerCel < 0 || szerCel > Szerokosc - 1) {
+		return;
+	}
+
 	Mapa[wysCel][szerCel] = Mapa[GraczWys][GraczSzer];
 	Mapa[GraczWys][GraczSzer] = TPustka;
 
@@ -103,7 +109,7 @@ void Level::PrzesunGracza(int oIle, Kierunek wKtoraStrone){
 
 Typ Level::Kolizja(int wys, int szer)
 {
-	Typ co = Mapa[wys][szer].Tag;
+	Typ co = Mapa[wys][szer]->Tag;
 
 	switch (co)
 	{
