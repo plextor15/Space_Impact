@@ -7,7 +7,7 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
-//#include "GameObject.h"
+#include "GameObject.h"
 #include "Gracz.h"
 #include "Wrogowie.h"
 

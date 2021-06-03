@@ -9,7 +9,7 @@ protected:
 	int Punkty;		//punkty za zabicie
 
 public:
-	Wrogowie(char wyglad, char tag, int zdrowie, int punkty);
+	Wrogowie(char wyglad, Typ tag, int zdrowie, int punkty);
 	~Wrogowie();
 	Wrogowie(const Wrogowie& drugi);
 	const Wrogowie& operator=(const Wrogowie& drugi);

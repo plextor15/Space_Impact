@@ -103,7 +103,7 @@ void Level::PrzesunGracza(int oIle, Kierunek wKtoraStrone){
 
 Typ Level::Kolizja(int wys, int szer)
 {
-	Typ co = Mapa[wys][szer].Tag;
+	Typ co = Mapa[wys][szer]->Tag;
 
 	switch (co)
 	{
