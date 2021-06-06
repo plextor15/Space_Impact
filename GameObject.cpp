@@ -23,3 +23,12 @@ const GameObject& GameObject::operator=(const GameObject& drugi)
 
 	return *this;
 }
+
+bool GameObject::CzyZyje(){
+	if (Zdrowie > 0) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}

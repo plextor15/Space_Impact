@@ -24,6 +24,7 @@ public:
 	~GameObject();
 	GameObject(const GameObject& drugi);
 	const GameObject& operator=(const GameObject& drugi);
+	bool CzyZyje();
 };
 
 #endif // !GAMEOBJECT_H

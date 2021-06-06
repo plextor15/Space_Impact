@@ -33,10 +33,12 @@ protected:
 	int Szerokosc;
 	int WysokoscWidok;		//wysokosc widoczna
 	int SzerokoscWidok;		//szerokosc widoczna
-
+	
 	//koordynaty gracza
 	int GraczWys;
 	int GraczSzer;
+
+	
 
 	//obiekty do ktore beda na mapie
 	GameObject* TPustka;
@@ -47,12 +49,15 @@ protected:
 	GameObject* TPociskGracza;
 
 public:
+	int PunktyLevel;	//punkty naliczane na levelu
+
 	Level();
 	~Level();
 	Level(const Level& drugi);
 	const Level& operator=(const Level& drugi);
 
 	void SetWidocznyRozmiar(int wys, int szer);
+	int GetPunktyLevel() { return PunktyLevel; }
 
 	void PrzesunObjekt(int wysOb, int szerOb, int wysCel, int szerCel);
 	void PrzesunGracza(int oIle, Kierunek wKtoraStrone);

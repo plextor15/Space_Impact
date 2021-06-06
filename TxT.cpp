@@ -32,3 +32,29 @@ void TxT::Boom(){
 
 	return;
 }
+
+void TxT::KoniecLevelu(){
+	system("CLS");
+	WyswietlTekst("Poziom ukonczony");
+	
+	char uiop = 'q';
+	//uiop = _getch();
+
+	std::string textPunkty = std::to_string(GetPunktyLevel());
+	textPunkty = "Uzyskano punktow: " + textPunkty;
+
+	while (uiop != ' ') {
+		uiop = _getch();
+	}
+	WyswietlTekst(textPunkty);
+	
+	uiop = 'q';
+	uiop = _getch();
+	while (uiop != ' ') {
+		exit = true;
+		uiop = _getch();
+	}
+	
+
+	return;
+}

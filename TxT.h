@@ -23,6 +23,7 @@ public:
 	void WyswietlTekst(std::string tekst);
 
 	virtual void Boom();
+	virtual void KoniecLevelu();
 };
 
 #endif // !TXT_H

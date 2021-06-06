@@ -9,6 +9,7 @@ Level::Level()
 	WysokoscWidok = 0;
 	GraczSzer = 0;
 	GraczWys = 0;
+	PunktyLevel = 0;
 
 	TPustka = new GameObject(' ', Typ::pusty, 0);
 	TStatyczny = new GameObject('#', Typ::statyczny, 1000);
@@ -61,6 +62,7 @@ void Level::SetWidocznyRozmiar(int wys, int szer)
 	}
 	return;
 }
+
 
 void Level::PrzesunObjekt(int wysOb, int szerOb, int wysCel, int szerCel)
 {
@@ -126,6 +128,10 @@ Typ Level::Kolizja(int wys, int szer)
 }
 
 void Level::ZniszczenieObiektu(int wysCel, int szerCel){
+	if (Kolizja(wysCel, szerCel) == Typ::wrog){
+		PunktyLevel += 10;
+	}
+	
 	Mapa[wysCel][szerCel] = TPustka;
 	return;
 }

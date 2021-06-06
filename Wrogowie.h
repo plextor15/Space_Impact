@@ -13,6 +13,7 @@ public:
 	~Wrogowie();
 	Wrogowie(const Wrogowie& drugi);
 	const Wrogowie& operator=(const Wrogowie& drugi);
+	int GetPunkty();
 };
 
 

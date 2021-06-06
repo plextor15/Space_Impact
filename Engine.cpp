@@ -2,7 +2,8 @@
 #include <iostream>//DEBUG ONLY!!
 
 Engine::Engine(){
-	//key = '`';
+	key = '`';
+	Postep = 0;
 }
 
 Engine::~Engine(){
@@ -62,7 +63,9 @@ void Engine::Sterow(){
 			PrzesunGracza(1, Kierunek::PRAWO);
 			break;
 		case 'a':
-			PrzesunGracza(1, Kierunek::LEWO);
+			if (Postep != GraczSzer) {
+				PrzesunGracza(1, Kierunek::LEWO);
+			}
 			break;
 		//strzal
 		case ' ':
@@ -104,9 +107,9 @@ void Engine::Initialize()
 		inic >> SzerokoscWidok >> WysokoscWidok;	//rozmiary widocznej czesci poziomu
 		WysokoscWidok = Wysokosc; //plansza tylko przesowa sie w poziomie
 	}
-	////DEBUG ONLY!!
-	//std::cout << Szerokosc << "  " << Wysokosc << "   " << SzerokoscWidok;
-	char jkjkkjjkkjjkjkjk = _getch();
+		//DEBUG ONLY!!
+		std::cout << Szerokosc << "  " << Wysokosc << "   " << SzerokoscWidok;
+		char jkjkkjjkkjjkjkjk = _getch();
 
 
 	//inicjalizacja glownej mapy
@@ -119,17 +122,6 @@ void Engine::Initialize()
 	for (int i = 0; i < WysokoscWidok; i++)
 		MapaWidoczna[i] = new char[SzerokoscWidok];
 
-	////zapelnianie glownej mapy
-	//GameObject* TMPgameObject;
-	//char chartmp;
-	//for (int i = 0; i < Wysokosc; i++)
-	//{
-	//	for (int j = 0; j < Szerokosc; j++)
-	//	{
-	//		inic >> chartmp;
-	//		Mapa[i][j] = TMPgameObject;
-	//	}
-	//}
 
 	//zapelnianie glownej mapy
 	char chartmp;
@@ -140,25 +132,15 @@ void Engine::Initialize()
 			ParserGameObject(chartmp, i, j);
 		}
 	}
-	//DEBUG ONLY!!
-	system("CLS");
-	for (int i = 0; i < Wysokosc; i++) {
-		for (int j = 0; j < Szerokosc; j++) {
-			std::cout << Mapa[i][j]->Wyglad;
-		}
-		std::cout << "\n";
-	}jkjkkjjkkjjkjkjk = _getch();
+		//DEBUG ONLY!!
+		system("CLS");
+		for (int i = 0; i < Wysokosc; i++) {
+			for (int j = 0; j < Szerokosc; j++) {
+				std::cout << Mapa[i][j]->Wyglad;
+			}
+			std::cout << "\n";
+		}jkjkkjjkkjjkjkjk = _getch();
 
-
-	////zapelnianie widoku
-	//for (int i = 0; i < WysokoscWidok; i++)
-	//{
-	//	for (int j = 0; j < SzerokoscWidok; j++)
-	//	{
-	//		inic >> chartmp;
-	//		MapaWidoczna[i][j] = Mapa[i][j]->Wyglad;
-	//	}
-	//}
 
 	//zapelnianie widoku
 	Postep = 0;
@@ -173,9 +155,12 @@ void Engine::GameLoop(){
 	while (!exit){//glowna petla
 		Sterow();
 		if (GraczSzer != Szerokosc - 1) {
-			//PrzesunGracza(1, Kierunek::PRAWO); //zeby nie uciekl z ekranu
-		} else {
-			//koniec levelu
+			//if (key != 'a') {
+			//	PrzesunGracza(1, Kierunek::PRAWO); //zeby nie uciekl z ekranu
+			//}
+			PrzesunGracza(1, Kierunek::PRAWO); //zeby nie uciekl z ekranu
+		} else {//koniec levelu
+			KoniecLevelu();
 		}
 		
 		Postep++;

@@ -4,3 +4,7 @@ Wrogowie::Wrogowie(char wyglad, Typ tag, int zdrowie, int punkty) : GameObject(w
 {
 	Punkty = punkty;
 }
+
+int Wrogowie::GetPunkty(){
+	return Punkty;
+}
