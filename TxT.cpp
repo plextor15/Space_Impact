@@ -28,33 +28,41 @@ void TxT::WyswietlTekst(std::string tekst){
 	return;
 }
 
-void TxT::Boom(){
+//void TxT::Boom(){
+//	return;
+//}
 
-	return;
-}
-
-void TxT::KoniecLevelu(){
+void TxT::KoniecLevelu(bool CzyWygrana){
 	system("CLS");
-	WyswietlTekst("Poziom ukonczony");
+
+	if (CzyWygrana) {
+		WyswietlTekst("Poziom ukonczony :)");
+	}
+	else{
+		WyswietlTekst("Przegrana :(");
+	}
 	
 	char uiop = 'q';
-	//uiop = _getch();
+	uiop = _getch();
 
 	std::string textPunkty = std::to_string(GetPunktyLevel());
 	textPunkty = "Uzyskano punktow: " + textPunkty;
 
-	while (uiop != ' ') {
-		uiop = _getch();
-	}
+	//while (uiop != ' ') {
+	//	uiop = _getch();
+	//}
+
 	WyswietlTekst(textPunkty);
 	
-	uiop = 'q';
-	uiop = _getch();
-	while (uiop != ' ') {
-		exit = true;
-		uiop = _getch();
-	}
+	//uiop = 'q';
+	//uiop = _getch();
+	//while (uiop != ' ') {
+	//	exit = true;
+	//	uiop = _getch();
+	//}
 	
+	uiop = _getch();
+	exit = true;
 
 	return;
 }

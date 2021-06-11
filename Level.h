@@ -23,7 +23,7 @@ class Level
 {
 private:
 	bool Noclip(int wys);	//sprawdza czy nie wyszlismy poza plansze
-	void Analiza();
+	//void Analiza();
 	void PrzesunGracza(int wysCel, int szerCel);
 
 protected:
@@ -45,8 +45,8 @@ protected:
 	GameObject* TStatyczny;
 	GameObject* TWrog;
 	GameObject* TGracz;
-	GameObject* TPociskWroga;
-	GameObject* TPociskGracza;
+	//GameObject* TPociskWroga;
+	//GameObject* TPociskGracza;
 
 public:
 	int PunktyLevel;	//punkty naliczane na levelu
@@ -62,6 +62,9 @@ public:
 	void PrzesunObjekt(int wysOb, int szerOb, int wysCel, int szerCel);
 	void PrzesunGracza(int oIle, Kierunek wKtoraStrone);
 	Typ Kolizja(int wys, int szer); //sprawdza czy bedzie kolizja
+	int GraczUderzylW(Kierunek A);
 	void ZniszczenieObiektu(int wysCel, int szerCel);
+
+	int GetPunktyZaWroga() { return TWrog->Zdrowie; }
 };
 #endif // !LEVEL_H

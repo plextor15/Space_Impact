@@ -22,8 +22,8 @@ public:
 	virtual void View();
 	void WyswietlTekst(std::string tekst);
 
-	virtual void Boom();
-	virtual void KoniecLevelu();
+	//virtual void Boom();
+	virtual void KoniecLevelu(bool CzyWygrana);
 };
 
 #endif // !TXT_H

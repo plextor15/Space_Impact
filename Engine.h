@@ -28,11 +28,13 @@ public:
 	void Initialize();
 	void GameLoop();
 	virtual void View() = 0;
-	virtual void Boom() = 0;	//efekt po zniszczeniu obiektu
-	virtual void KoniecLevelu() = 0;
+	//virtual void Boom() = 0;	//efekt po zniszczeniu obiektu
+	virtual void KoniecLevelu(bool CzyWygrana) = 0;
 
 	void ParserGameObject(char wyg, int i, int j);
 	void AktualizacjaWidocznejMapy(int odkad);
+	
+	void GraczWCosUderzyl(int cos);
 };
 
 #endif // !ENGINE_H

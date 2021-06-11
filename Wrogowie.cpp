@@ -1,8 +1,7 @@
 #include "Wrogowie.h"
 
-Wrogowie::Wrogowie(char wyglad, Typ tag, int zdrowie, int punkty) : GameObject(wyglad, tag, zdrowie)
-{
-	Punkty = punkty;
+Wrogowie::Wrogowie(char wyglad, Typ tag, int zdrowie, int punkty) : GameObject(wyglad, tag, zdrowie){
+	Punkty = zdrowie;
 }
 
 int Wrogowie::GetPunkty(){

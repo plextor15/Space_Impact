@@ -10,7 +10,7 @@ enum Typ
 	statyczny = 1,	// '#'
 	wrog = 2,		// '<'
 	gracz = 3,		// '>'
-	pocisk = 4		// '-'
+	pocisk = 4		// '-' niewykorzystywany
 };
 
 class GameObject

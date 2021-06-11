@@ -47,9 +47,39 @@ void Engine::AktualizacjaWidocznejMapy(int odkad){
 	return;
 }
 
+void Engine::GraczWCosUderzyl(int cos){
+	if (cos == 1){
+		KoniecLevelu(false);
+	}
+	if (cos == 2){
+		PunktyLevel += TWrog->Zdrowie;
+	}
+
+	return;
+}
+
 void Engine::Sterow(){
 	if (_kbhit()) {
 		key = _getch();
+
+		int WcoUderzylGracz = 0;
+		switch (key){
+		case 's':
+			WcoUderzylGracz = GraczUderzylW(Kierunek::GORA);
+			break;
+		case 'w':
+			WcoUderzylGracz = GraczUderzylW(Kierunek::DOL);
+			break;
+		case 'd':
+			WcoUderzylGracz = GraczUderzylW(Kierunek::PRAWO);
+			break;
+		case 'a':
+			WcoUderzylGracz = GraczUderzylW(Kierunek::LEWO);
+			break;
+		default:break;
+		}
+
+		GraczWCosUderzyl(WcoUderzylGracz);
 
 		switch (key){
 		//sterowanie statkiem gracza
@@ -67,32 +97,20 @@ void Engine::Sterow(){
 				PrzesunGracza(1, Kierunek::LEWO);
 			}
 			break;
-		//strzal
-		case ' ':
-
-			break;
 		case 'q':	//wyjscie
 			exit = true;
 			break;
-		//cheaty
-		case '`':
 
-			break;
 		case '.':
 			ileKlatka += 50;	//spowolnienie czasu
 			break;
 		case ',':
 			ileKlatka -= 50;	//przyspieszenie czasu
 			break;
-
-		default:
-			break;
+		default: break;
 		}
-		
-		
 	}
-	//DEBUG ONLY!!
-		std::cout << key;
+
 	return;
 }
 
@@ -132,14 +150,14 @@ void Engine::Initialize()
 			ParserGameObject(chartmp, i, j);
 		}
 	}
-		//DEBUG ONLY!!
-		system("CLS");
-		for (int i = 0; i < Wysokosc; i++) {
-			for (int j = 0; j < Szerokosc; j++) {
-				std::cout << Mapa[i][j]->Wyglad;
-			}
-			std::cout << "\n";
-		}jkjkkjjkkjjkjkjk = _getch();
+		////DEBUG ONLY!!
+		//system("CLS");
+		//for (int i = 0; i < Wysokosc; i++) {
+		//	for (int j = 0; j < Szerokosc; j++) {
+		//		std::cout << Mapa[i][j]->Wyglad;
+		//	}
+		//	std::cout << "\n";
+		//}jkjkkjjkkjjkjkjk = _getch();
 
 
 	//zapelnianie widoku
@@ -160,9 +178,12 @@ void Engine::GameLoop(){
 			//}
 			PrzesunGracza(1, Kierunek::PRAWO); //zeby nie uciekl z ekranu
 		} else {//koniec levelu
-			KoniecLevelu();
+			KoniecLevelu(true);
 		}
 		
+		//sprawdzenie kolizji
+
+
 		Postep++;
 		AktualizacjaWidocznejMapy(Postep);
 		View();

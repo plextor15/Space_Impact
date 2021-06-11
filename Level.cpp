@@ -13,10 +13,11 @@ Level::Level()
 
 	TPustka = new GameObject(' ', Typ::pusty, 0);
 	TStatyczny = new GameObject('#', Typ::statyczny, 1000);
-	TWrog = new GameObject('<', Typ::wrog, 1);
+	//TWrog = new GameObject('<', Typ::wrog, 1);
+	TWrog = new Wrogowie('<', Typ::wrog, 1, 10);
 	TGracz = new GameObject('>', Typ::pocisk, 4);
-	TPociskWroga = new GameObject('-', Typ::pocisk, 1);
-	TPociskGracza = new GameObject('-', Typ::pocisk, 1);
+	//TPociskWroga = new GameObject('-', Typ::pocisk, 1);
+	//TPociskGracza = new GameObject('-', Typ::pocisk, 1);
 }
 
 Level::~Level()
@@ -47,11 +48,11 @@ bool Level::Noclip(int wys)
 	}
 }
 
-void Level::Analiza()
-{
-
-	return;
-}
+//void Level::Analiza()
+//{
+//
+//	return;
+//}
 
 void Level::SetWidocznyRozmiar(int wys, int szer)
 {
@@ -127,11 +128,41 @@ Typ Level::Kolizja(int wys, int szer)
 	}
 }
 
+int Level::GraczUderzylW(Kierunek A) { // 1-zgon gracza, 2-zgon wroga
+	int wCo = 0;
+	int x = 0, y = 0;
+
+	Typ UderzylW;
+	switch (A)
+	{
+	case GORA: y = 1;
+		break;
+	case DOL: y = -1;
+		break;
+	case PRAWO: x = 1;
+		break;
+	case LEWO: x = -1;
+		break;
+	default:
+		break;
+	}
+	UderzylW = Kolizja(GraczWys + y, GraczSzer + x);
+
+	if (UderzylW == Typ::statyczny){
+		wCo = 1;
+	}
+	if (UderzylW == Typ::wrog) {
+		wCo = 2;
+	}
+
+	return wCo;
+}
+
 void Level::ZniszczenieObiektu(int wysCel, int szerCel){
 	if (Kolizja(wysCel, szerCel) == Typ::wrog){
 		PunktyLevel += 10;
 	}
 	
-	Mapa[wysCel][szerCel] = TPustka;
+	//Mapa[wysCel][szerCel] = TPustka;
 	return;
 }
