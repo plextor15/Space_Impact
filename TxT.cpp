@@ -8,7 +8,7 @@ void TxT::View(){
 		std::cout << "\n";
 	}
 	
-	std::cout << "\n\n  " << GraczWys << " , " << GraczSzer; //DEBUG ONLY!!
+	//std::cout << "\n\n  " << GraczWys << " , " << GraczSzer; //DEBUG ONLY!!
 	Sleep(ileKlatka);
 	system("CLS");
 	return;

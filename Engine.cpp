@@ -58,57 +58,61 @@ void Engine::GraczWCosUderzyl(int cos){
 	return;
 }
 
-void Engine::Sterow(){
+void Engine::Sterow() {
 	if (_kbhit()) {
 		key = _getch();
+	}
+	else {
+		key = 'd';
+	}
 
-		int WcoUderzylGracz = 0;
-		switch (key){
-		case 's':
-			WcoUderzylGracz = GraczUderzylW(Kierunek::GORA);
-			break;
-		case 'w':
-			WcoUderzylGracz = GraczUderzylW(Kierunek::DOL);
-			break;
-		case 'd':
-			WcoUderzylGracz = GraczUderzylW(Kierunek::PRAWO);
-			break;
-		case 'a':
-			WcoUderzylGracz = GraczUderzylW(Kierunek::LEWO);
-			break;
-		default:break;
-		}
+	int WcoUderzylGracz = 0;
+	switch (key) {
+	case 's':
+		WcoUderzylGracz = GraczUderzylW(Kierunek::GORA);
+		break;
+	case 'w':
+		WcoUderzylGracz = GraczUderzylW(Kierunek::DOL);
+		break;
+	case 'd':
+		WcoUderzylGracz = GraczUderzylW(Kierunek::PRAWO);
+		break;
+	case 'a':
+		WcoUderzylGracz = GraczUderzylW(Kierunek::LEWO);
+		break;
+	default:break;
+	}
 
-		GraczWCosUderzyl(WcoUderzylGracz);
+	GraczWCosUderzyl(WcoUderzylGracz);
 
-		switch (key){
+	switch (key) {
 		//sterowanie statkiem gracza
-		case 's':
-			PrzesunGracza(1, Kierunek::GORA);
-			break;
-		case 'w':
-			PrzesunGracza(1, Kierunek::DOL);
-			break;
-		case 'd':
-			PrzesunGracza(1, Kierunek::PRAWO);
-			break;
-		case 'a':
-			if (Postep != GraczSzer) {
-				PrzesunGracza(1, Kierunek::LEWO);
-			}
-			break;
-		case 'q':	//wyjscie
-			exit = true;
-			break;
-
-		case '.':
-			ileKlatka += 50;	//spowolnienie czasu
-			break;
-		case ',':
-			ileKlatka -= 50;	//przyspieszenie czasu
-			break;
-		default: break;
+	case 's':
+		PrzesunGracza(1, Kierunek::GORA);
+		break;
+	case 'w':
+		PrzesunGracza(1, Kierunek::DOL);
+		break;
+	case 'd':
+		PrzesunGracza(1, Kierunek::PRAWO);
+		break;
+	case 'a':
+		if (Postep != GraczSzer) {
+			PrzesunGracza(1, Kierunek::LEWO);
 		}
+		break;
+	case 'q':	//wyjscie
+		exit = true;
+		break;
+
+	case '.':
+		ileKlatka += 50;	//spowolnienie czasu
+		break;
+	case ',':
+		ileKlatka -= 50;	//przyspieszenie czasu
+		break;
+	default: break;
+
 	}
 
 	return;
@@ -125,9 +129,9 @@ void Engine::Initialize()
 		inic >> SzerokoscWidok >> WysokoscWidok;	//rozmiary widocznej czesci poziomu
 		WysokoscWidok = Wysokosc; //plansza tylko przesowa sie w poziomie
 	}
-		//DEBUG ONLY!!
-		std::cout << Szerokosc << "  " << Wysokosc << "   " << SzerokoscWidok;
-		char jkjkkjjkkjjkjkjk = _getch();
+		////DEBUG ONLY!!
+		//std::cout << Szerokosc << "  " << Wysokosc << "   " << SzerokoscWidok;
+		//char jkjkkjjkkjjkjkjk = _getch();
 
 
 	//inicjalizacja glownej mapy
@@ -159,7 +163,7 @@ void Engine::Initialize()
 		//	std::cout << "\n";
 		//}jkjkkjjkkjjkjkjk = _getch();
 
-
+	
 	//zapelnianie widoku
 	Postep = 0;
 	AktualizacjaWidocznejMapy(Postep);
@@ -176,7 +180,13 @@ void Engine::GameLoop(){
 			//if (key != 'a') {
 			//	PrzesunGracza(1, Kierunek::PRAWO); //zeby nie uciekl z ekranu
 			//}
-			PrzesunGracza(1, Kierunek::PRAWO); //zeby nie uciekl z ekranu
+			
+			//PrzesunGracza(1, Kierunek::PRAWO); //zeby nie uciekl z ekranu
+			//key = 'd';
+			if (key != 'd'){
+				GraczWCosUderzyl(GraczUderzylW(Kierunek::PRAWO));
+				PrzesunGracza(1, Kierunek::PRAWO); //zeby nie uciekl z ekranu
+			}
 		} else {//koniec levelu
 			KoniecLevelu(true);
 		}
