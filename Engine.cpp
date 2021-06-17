@@ -1,5 +1,5 @@
 #include "Engine.h"
-#include <iostream>//DEBUG ONLY!!
+//#include <iostream>//DEBUG ONLY!!
 
 Engine::Engine(){
 	key = '`';
@@ -58,7 +58,7 @@ void Engine::GraczWCosUderzyl(int cos){
 	return;
 }
 
-void Engine::Sterow() {
+/*void Engine::Sterow() {
 	if (_kbhit()) {
 		key = _getch();
 	}
@@ -116,7 +116,7 @@ void Engine::Sterow() {
 	}
 
 	return;
-}
+}*/
 
 void Engine::Initialize()
 {

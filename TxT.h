@@ -7,6 +7,7 @@
 #include <iostream>
 #include <windows.h> //do Sleep i CLS
 #include <string>
+#include <conio.h>
 
 //class TxT : protected Engine
 class TxT : public Engine
@@ -19,6 +20,7 @@ public:
 	TxT(const TxT& drugi);
 	const TxT& operator=(const TxT& drugi);
 
+	virtual void Sterow();
 	virtual void View();
 	void WyswietlTekst(std::string tekst);
 

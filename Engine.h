@@ -6,8 +6,8 @@
 #include "Level.h"
 #include "GameObject.h"
 #include <fstream>
-#include <windows.h>
-#include <conio.h>
+//#include <windows.h>
+//#include <conio.h>
 
 class Engine : protected Level
 {
@@ -24,7 +24,7 @@ public:
 	Engine(const Engine& drugi);
 	const Engine& operator=(const Engine& drugi);
 	
-	void Sterow();
+	virtual void Sterow() = 0;
 	void Initialize();
 	void GameLoop();
 	virtual void View() = 0;

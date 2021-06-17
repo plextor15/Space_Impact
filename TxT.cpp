@@ -1,5 +1,65 @@
 #include "TxT.h"
 
+void TxT::Sterow(){
+	if (_kbhit()) {
+		key = _getch();
+	}
+	else {
+		key = 'd';
+	}
+
+	int WcoUderzylGracz = 0;
+	switch (key) {
+	case 's':
+		WcoUderzylGracz = GraczUderzylW(Kierunek::GORA);
+		break;
+	case 'w':
+		WcoUderzylGracz = GraczUderzylW(Kierunek::DOL);
+		break;
+	case 'd':
+		WcoUderzylGracz = GraczUderzylW(Kierunek::PRAWO);
+		break;
+	case 'a':
+		WcoUderzylGracz = GraczUderzylW(Kierunek::LEWO);
+		break;
+	default:break;
+	}
+
+	GraczWCosUderzyl(WcoUderzylGracz);
+
+	switch (key) {
+		//sterowanie statkiem gracza
+	case 's':
+		PrzesunGracza(1, Kierunek::GORA);
+		break;
+	case 'w':
+		PrzesunGracza(1, Kierunek::DOL);
+		break;
+	case 'd':
+		PrzesunGracza(1, Kierunek::PRAWO);
+		break;
+	case 'a':
+		if (Postep != GraczSzer) {
+			PrzesunGracza(1, Kierunek::LEWO);
+		}
+		break;
+	case 'q':	//wyjscie
+		exit = true;
+		break;
+
+	case '.':
+		ileKlatka += 50;	//spowolnienie czasu
+		break;
+	case ',':
+		ileKlatka -= 50;	//przyspieszenie czasu
+		break;
+	default: break;
+
+	}
+
+	return;
+}
+
 void TxT::View(){
 	for (int i = 0; i < WysokoscWidok; i++){
 		for (int j = 0; j < SzerokoscWidok; j++){
